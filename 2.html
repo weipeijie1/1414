@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击改变颜色的❤</title>
+    <style>
+        .heart-container {
+            display: flex;
+            gap: 10px;
+        }
+        .heart {
+            font-size: 30px;
+            color: red;
+            cursor: pointer; 
+        }
+        .heart.black {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-container" id="heart-container"></div>
+    <script>
+       var heartContainer = document.getElementById("heart-container");
+for (var i = 0; i < 5; i++) {
+    var heart = document.createElement("span");
+    heart.classList.add("heart");
+    heart.textContent = "❤";  
+    heartContainer.appendChild(heart);
+}
+heartContainer.addEventListener("click", function(e) {
+    if (e.target.classList.contains("heart")) {
+        var hearts = Array.from(heartContainer.children);
+        var clickedIndex = hearts.indexOf(e.target);
+        hearts.forEach(function(heart, index) {
+            if (index <= clickedIndex) {
+                heart.classList.remove("black");
+            } else {
+                heart.classList.add("black"); 
+            }
+        });
+    }
+});
+    </script>
+</body>
+</html>
+    

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按钮点击修改输入框类型</title>
+</head>
+<body>
+    <input id="input1" type="password" placeholder="请输入内容">
+    <button class="btn">切换</button>
+
+    <script>
+        var btn = document.querySelector(".btn");
+        var input1 = document.querySelector("#input1");
+
+        btn.addEventListener('click', function(e) {
+            if (e.target === btn) {
+                input1.type = 'text'; 
+            }
+        });
+    </script>
+</body>
+</html>

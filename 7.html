@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+</head>
+<body>
+    <textarea id="t" placeholder="请输入留言"></textarea><br>
+    <button class="btn">发布</button>
+    <button class="btn1">删除所有言论</button>
+
+    <div id="comments-container">
+    </div>
+
+    <script>
+        var t = document.querySelector("#t");
+        var btn = document.querySelector(".btn");
+        var btn1 = document.querySelector(".btn1");
+        var commentsContainer = document.querySelector("#comments-container");
+        btn.addEventListener("click", function(e) {
+            if (e.target === btn) {
+                var commentText = t.value.trim(); 
+                if (commentText) {
+                    var newComment = document.createElement("p"); 
+                    newComment.textContent = commentText; 
+                    commentsContainer.appendChild(newComment); 
+                    t.value = ""; 
+                } else {
+                    alert("请输入留言内容！");
+                }
+            }
+        });
+        btn1.addEventListener("click", function(e) {
+            if (e.target === btn1) {
+                commentsContainer.innerHTML = ""; 
+            }
+        });
+    </script>
+</body>
+</html>

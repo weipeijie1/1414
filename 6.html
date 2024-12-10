@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .t {
+            width: 600px;
+            height: 100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        .t img {
+            padding-left: 20px;
+            cursor: pointer; 
+        }
+        .enlarged {
+            position: fixed;
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1000px;
+            height: 500px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="t">
+        <img src="./images/1.webp" alt="" class="p1">
+        <img src="./images/2.webp" alt="" class="p2">
+        <img src="./images/3.webp" alt="" class="p3">
+        <img src="./images/4.webp" alt="" class="p4">
+    </div>
+    
+    <script>
+        var images = document.querySelectorAll(".t img");
+        images.forEach(function(img) {
+            img.addEventListener('click', function(e) {
+                if (document.querySelector(".enlarged")) return;
+                img.classList.add("enlarged");
+                e.stopPropagation();
+            });
+        });
+        document.addEventListener("click", function() {
+            var enlargedImg = document.querySelector(".enlarged");
+            if (enlargedImg) {
+                enlargedImg.classList.remove("enlarged");
+            }
+        });
+        document.querySelector(".t").addEventListener("click", function(e) {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>
